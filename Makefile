@@ -16,7 +16,7 @@ options:
 	@echo "LDFLAGS = ${LDFLAGS}"
 	@echo "CC      = ${CC}"
 
-dwmblocks: dwmblocks.c blocks.def.h blocks.h
+dwmblocks: dwmblocks.c blocks.h
 	${CC} -o dwmblocks dwmblocks.c ${CFLAGS} ${LDFLAGS}
 
 blocks.h:
@@ -32,5 +32,9 @@ install: dwmblocks
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwmblocks
+
+run:
+	killall -q dwmblocks
+	dwmblocks &
 
 .PHONY: all options clean install uninstall
